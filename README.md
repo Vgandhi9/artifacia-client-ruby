@@ -30,11 +30,20 @@ client = Client.new(user_name, password)
 ### Creating your index
 The first step is to create a index of the items that you would like to store in our databases to perform search against. If you don't have data ready right now you can quickly get started with our [sample data](). Once the data is stored and indexed we will inform you shortly.
 
-```python
-import json
-sample_data = json.load(open("sample_data.json","rb"))
+```ruby
+sample_data = {
+    "item_details" => [{"prod_id"=> 11145, "image_url"=> \
+    "http://cdn3.bombayelectric.in/7957/gallery/DSC00977-edit.jpg",\
+    "item_category"=> "Dress","item_pattern"=> "Animal Print", \
+    "item_color"=> "Blue","item_high_level_cat"=>"Top","item_material"=> \  
+    "Cotton", "item_length"=>"Full Length"},{"prod_id"=> 1135,"image_url"=> \
+    "http://cdn3.bombayelectric.in/7957/gallery/DSC00977-edit.jpg", \
+    "item_category"=>"Tops","item_pattern"=>"Animal Print","item_color"=>"Black",\
+    "item_length"=>"Full Length","item_material"=>"Polyester",\
+    "item_high_level_cat"=>"Top"} ]
+  }.to_json
 data_indexing_response = client.upload_item_data(sample_data)
-print data_indexing_response
+puts data_indexing_response
 ```
 
 ### Performing Visual Recommendation
