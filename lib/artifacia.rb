@@ -6,7 +6,7 @@ require 'json'
 class Client
   def initialize(username, password)
     @user = username
-    @passwd = password
+    @pass = password
     @host = 'api.artifacia.com'
   end
 
