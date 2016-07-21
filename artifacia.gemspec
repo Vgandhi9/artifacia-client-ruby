@@ -9,8 +9,7 @@ Gem::Specification.new do |s|
   s.files       = [
 	"lib/artifacia.rb", 
 	"artifacia.gemspec", 
-	"README.md",
-	"LICENSE"
+	"README.md"
   ]
   s.homepage    =
     'https://github.com/artifacia/artifacia-client-ruby'

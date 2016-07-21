@@ -10,49 +10,35 @@ class Client
     @host = 'api.artifacia.com'
   end
 
-  def upload_user_data(data.json)
+  def upload_user_data(data)
     @post_ws = "/v1/users"
-    @payload={
-    	data.json
-      }.to_json
+    @payload=data
 
     req = Net::HTTP::Post.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          req.body = @payload
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
-        #  puts "Response #{response.code} #{response.message}:
-        #  #{response.body}"
-
     return response.body
   end
 
-  def upload_item_data(data.json)
+  def upload_item_data(data)
     @post_ws = "/v1/items"
-    @payload={
-    	data.json
-      }.to_json
+    @payload=data
 
     req = Net::HTTP::Post.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          req.body = @payload
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
-        #  puts "Response #{response.code} #{response.message}:
-        #  #{response.body}"
-
     return response.body
   end
 
   def delete_item_data(item_ids)
     @post_ws = "/v1/items"
-    @payload={
-    	item_ids
-      }.to_json
+    @payload=item_ids
     req = Net::HTTP::Delete.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          req.body = @payload
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
-        #  puts "Response #{response.code} #{response.message}:
-        #  #{response.body}"
     return response.body
   end
 
@@ -61,9 +47,6 @@ class Client
     req = Net::HTTP::Get.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
-        #  puts "Response #{response.code} #{response.message}:
-        #  #{response.body}"
-
     return response.body
   end
 
@@ -72,9 +55,6 @@ class Client
     req = Net::HTTP::Get.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
-        #  puts "Response #{response.code} #{response.message}:
-        #  #{response.body}"
-
     return response.body
   end
 
@@ -83,9 +63,6 @@ class Client
     req = Net::HTTP::Get.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
-        #  puts "Response #{response.code} #{response.message}:
-        #  #{response.body}"
-
     return response.body
   end
 end
