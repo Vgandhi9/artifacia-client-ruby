@@ -12,32 +12,27 @@ class Client
 
   def upload_user_data(data)
     @post_ws = "/v1/users"
-    @payload=data
-
     req = Net::HTTP::Post.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
-         req.body = @payload
+         req.body = data
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
     return response.body
   end
 
   def upload_item_data(data)
     @post_ws = "/v1/items"
-    @payload=data
-
     req = Net::HTTP::Post.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
-         req.body = @payload
+         req.body = data
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
     return response.body
   end
 
   def delete_item_data(item_ids)
     @post_ws = "/v1/items"
-    @payload=item_ids
     req = Net::HTTP::Delete.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
-         req.body = @payload
+         req.body = item_ids
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
     return response.body
   end
