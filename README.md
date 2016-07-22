@@ -42,6 +42,6 @@ You can search for a product ID indexed in the sample data you inserted/uploaded
 
 ```ruby
 sample_prod_id = 2761
-query_response = client.get_visual_recommendations(sample_prod_id)
+query_response = client.get_visual_recommendation(sample_prod_id)
 puts query_response
 ```
