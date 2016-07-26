@@ -10,8 +10,17 @@ class Client
     @host = 'api.artifacia.com'
   end
 
-  def upload_user_data(data)
-    @post_ws = "/v1/users"
+  def upload_user_purchased_items(user_id, data)
+    @post_ws = "/v1/users/#{user_id}/purchased_items"
+    req = Net::HTTP::Post.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
+         req.basic_auth @user, @pass
+         req.body = data
+         response = Net::HTTP.new(@host).start {|http| http.request(req) }
+    return response.body
+  end
+
+  def upload_user_viewed_items(user_id, data)
+    @post_ws = "/v1/users/#{user_id}/viewed_items"
     req = Net::HTTP::Post.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          req.body = data
