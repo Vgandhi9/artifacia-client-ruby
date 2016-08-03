@@ -38,10 +38,11 @@ puts data_indexing_response
 
 ### Performing Visual Recommendation
 Once you receive a notification form us about the status of the indexed data, you are ready to search.
-You can search for a product ID indexed in the sample data you inserted/uploaded.
+You can search for a product ID indexed in the sample data you inserted/uploaded. And also you can specify the number to results to be returned.
 
 ```ruby
 sample_prod_id = 2761
-query_response = client.get_visual_recommendation(sample_prod_id)
+num = 4
+query_response = client.get_visual_recommendation(sample_prod_id, num)
 puts query_response
 ```

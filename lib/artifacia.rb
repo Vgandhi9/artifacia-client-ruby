@@ -46,24 +46,24 @@ class Client
     return response.body
   end
 
-  def get_visual_recommendation(prod_id)
-    @post_ws = "/v1/recommendation/similar/#{prod_id}"
+  def get_visual_recommendation(prod_id, num)
+    @post_ws = "/v1/recommendation/similar/#{prod_id}/#{num}"
     req = Net::HTTP::Get.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
     return response.body
   end
 
-  def get_cpr_recommendation(prod_id)
-    @post_ws = "/v1/recommendation/collections/#{prod_id}"
+  def get_cpr_recommendation(prod_id, num)
+    @post_ws = "/v1/recommendation/collections/#{prod_id}/#{num}"
     req = Net::HTTP::Get.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
     return response.body
   end
 
-  def get_smart_recommendation(prod_id)
-    @post_ws = "/v1/recommendation/user/#{prod_id}"
+  def get_personalized_recommendation(user_id, num)
+    @post_ws = "/v1/recommendation/user/#{user_id}/#{num}"
     req = Net::HTTP::Get.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          response = Net::HTTP.new(@host).start {|http| http.request(req) }
