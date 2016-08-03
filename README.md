@@ -2,7 +2,7 @@
 
 This ruby client is a simple wrapper around our powerful Visual Discovery [API](http://docs.artifacia.com/).
 
-The wrapper allows you to create your own indexes of images on which you would like to enhance the product discovery experiences. It also allows you to get various types of recommendations which are listed below.
+The wrapper allows you to create your own index of images on which you would like to enhance the product discovery experiences. It also allows you to get various types of recommendations which are listed below.
 
 * Visual Recommendation
 * Cross Product Recommendation
@@ -18,7 +18,7 @@ To install the package you can follow the steps:-
 
 ## Getting Started
 
-The API is really easy and simple to use. First you need to visit [this](http://www.artifacia.com/contact/) page and request for username and password. Using that credentials you can create your constructor and get stated. 
+The API is really easy and simple to use. First you need to visit [this](http://www.artifacia.com/requestaccess/) page and request for username and password. Using that credentials you can create your constructor and get stated.
 
 ```ruby
 require 'artifacia'
@@ -37,8 +37,10 @@ puts data_indexing_response
 ```
 
 ### Performing Visual Recommendation
+
 Once you receive a notification form us about the status of the indexed data, you are ready to search.
 You can search for a product ID indexed in the sample data you inserted/uploaded. And also you can specify the number to results to be returned.
+
 
 ```ruby
 sample_prod_id = 2761
