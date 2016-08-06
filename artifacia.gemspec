@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'artifacia'
-  s.version     = '0.1.2'
+  s.version     = '0.1.2.1'
   s.date        = Date.today
   s.summary     = "Artifacia!"
   s.description = "A ruby client to integrate visual recommendation feature from Artifacia API"
