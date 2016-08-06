@@ -1,5 +1,4 @@
 require 'net/https'
-
 require 'rubygems'
 require 'json'
 
@@ -8,14 +7,17 @@ class Client
     @user = username
     @pass = password
     @host = 'api.artifacia.com'
+    @port = 443
+    @http = Net::HTTP.new(@host, @port)
+    @http.use_ssl = true
+    @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   end
 
   def upload_user_purchased_items(user_id, data)
     @post_ws = "/v1/users/#{user_id}/purchased_items"
     req = Net::HTTP::Post.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
-         req.body = data
-         response = Net::HTTP.new(@host).start {|http| http.request(req) }
+         response = @http.request(req)
     return response.body
   end
 
@@ -24,7 +26,7 @@ class Client
     req = Net::HTTP::Post.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          req.body = data
-         response = Net::HTTP.new(@host).start {|http| http.request(req) }
+         response = @http.request(req)
     return response.body
   end
 
@@ -33,7 +35,7 @@ class Client
     req = Net::HTTP::Post.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          req.body = data
-         response = Net::HTTP.new(@host).start {|http| http.request(req) }
+         response = @http.request(req)
     return response.body
   end
 
@@ -42,31 +44,31 @@ class Client
     req = Net::HTTP::Delete.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
          req.basic_auth @user, @pass
          req.body = item_ids
-         response = Net::HTTP.new(@host).start {|http| http.request(req) }
+         response = @http.request(req)
     return response.body
   end
 
   def get_visual_recommendation(prod_id, num)
     @post_ws = "/v1/recommendation/similar/#{prod_id}/#{num}"
-    req = Net::HTTP::Get.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
+    req = Net::HTTP::Get.new(@post_ws)
          req.basic_auth @user, @pass
-         response = Net::HTTP.new(@host).start {|http| http.request(req) }
+         response = @http.request(req)
     return response.body
   end
 
   def get_cpr_recommendation(prod_id, num)
     @post_ws = "/v1/recommendation/collections/#{prod_id}/#{num}"
-    req = Net::HTTP::Get.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
+    req = Net::HTTP::Get.new(@post_ws)
          req.basic_auth @user, @pass
-         response = Net::HTTP.new(@host).start {|http| http.request(req) }
+         response = @http.request(req)
     return response.body
   end
 
   def get_personalized_recommendation(user_id, num)
     @post_ws = "/v1/recommendation/user/#{user_id}/#{num}"
-    req = Net::HTTP::Get.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
+    req = Net::HTTP::Get.new(@post_ws)
          req.basic_auth @user, @pass
-         response = Net::HTTP.new(@host).start {|http| http.request(req) }
+         response = @http.request(req)
     return response.body
   end
 end
