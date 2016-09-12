@@ -22,9 +22,8 @@ The API is really easy and simple to use. First you need to visit [this](http://
 
 ```ruby
 require 'artifacia'
-user_name = <your_username>
-password = <your_password>
-client = Client.new(user_name, password)
+api_key = <api_key>
+client = Client.new(api_key)
 ```
 
 ### Creating your index
@@ -39,12 +38,13 @@ puts data_indexing_response
 ### Performing Visual Recommendation
 
 Once you receive a notification form us about the status of the indexed data, you are ready to search.
-You can search for a product ID indexed in the sample data you inserted/uploaded. And also you can specify the number to results to be returned.
+You can search for a product ID indexed in the sample data you inserted/uploaded. And also you can specify the number to results to be returned as well as you can set attribute if you want to prioritize the result on the basis of tags like color, material, pattern etc as given below.
 
 
 ```ruby
 sample_prod_id = 2761
 num = 4
-query_response = client.get_visual_recommendation(sample_prod_id, num)
+filters = {"color" => 1, "pattern" => 1}
+query_response = client.get_visual_recommendation(sample_prod_id, num, filters)
 puts query_response
 ```

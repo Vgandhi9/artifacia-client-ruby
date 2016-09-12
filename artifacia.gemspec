@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
   s.name        = 'artifacia'
-  s.version     = '0.1.2.1'
+  s.version     = '0.1.2.2'
   s.date        = Date.today
   s.summary     = "Artifacia!"
   s.description = "A ruby client to integrate visual recommendation feature from Artifacia API"
   s.authors     = ["Ashish Kumar"]
   s.email       = 'erashish122@gmail.com'
   s.files       = [
-	"lib/artifacia.rb", 
-	"artifacia.gemspec", 
+	"lib/artifacia.rb",
+	"artifacia.gemspec",
 	"README.md"
   ]
   s.homepage    =
