@@ -43,12 +43,12 @@ class Client
     return response.body
   end
 
-  def get_visual_recommendation(prod_id, num, filters)
-    @post_ws = "/v1/recommendation/similar/#{prod_id}/#{num}?"
-    filters.each do |key, value|
-      @post_ws = @post_ws+"#{key}=#{value}&"
+  def get_visual_recommendation(prod_id, num, filters = Hash.new)
+    @post_ws = "/v1/recommendation/similar/#{prod_id}/#{num}"
+    puts filters["filters"]
       
-    req = Net::HTTP::Get.new(@post_ws, initheader = {'api_key' => @api_key})
+    req = Net::HTTP::Post.new(@post_ws, initheader = {'api_key' => @api_key})
+         req.body = {"filters" =>filters}.to_json
          response = @http.request(req)
     return response.body
   end
